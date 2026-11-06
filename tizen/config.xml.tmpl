@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="https://bitchord.in/tizen" version="${VERSION}" viewmodes="maximized">
+  <tizen:application id="${PACKAGE_ID}.BitChord" package="${PACKAGE_ID}" required_version="6.0"/>
+  <tizen:profile name="tv-samsung"/>
+  <content src="index.html"/>
+  <icon src="icon.png"/>
+  <name>BitChord</name>
+  <author href="https://github.com/kushagrasinghx/BitChord">BitChord</author>
+  <license href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0</license>
+
+  <!-- Full network access: YouTube, lyric providers, user addons, local network -->
+  <access origin="*" subdomains="true"/>
+  <tizen:allow-navigation>*</tizen:allow-navigation>
+  <tizen:content-security-policy>default-src * data: blob: filesystem:; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: data:; worker-src 'self' blob: data:; style-src 'self' 'unsafe-inline' *; img-src * data: blob:; media-src * blob: data: mediastream:; connect-src * ws: wss: data: blob:; font-src * data:</tizen:content-security-policy>
+
+  <tizen:setting screen-orientation="landscape" context-menu="disable" background-support="enable"
+                 encryption="disable" install-location="auto" hwkey-event="enable"/>
+
+  <!-- Smart Hub Preview metadata -->
+  <tizen:metadata key="http://samsung.com/tv/metadata/use.preview" value="bg_service"/>
+
+  <!-- App control for bitchord:// deep links -->
+  <tizen:app-control>
+    <tizen:src name="index.html"/>
+    <tizen:operation name="http://tizen.org/appcontrol/operation/view"/>
+    <tizen:uri name="bitchord"/>
+  </tizen:app-control>
+
+  <!-- Standard Tizen & Samsung TV Privileges -->
+  <tizen:privilege name="http://tizen.org/privilege/internet"/>
+  <tizen:privilege name="http://tizen.org/privilege/tv.inputdevice"/>
+  <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
+  <tizen:privilege name="http://tizen.org/privilege/application.info"/>
+  <tizen:privilege name="http://tizen.org/privilege/filesystem.read"/>
+  <tizen:privilege name="http://tizen.org/privilege/filesystem.write"/>
+  <tizen:privilege name="http://tizen.org/privilege/externalstorage"/>
+  <tizen:privilege name="http://tizen.org/privilege/content.read"/>
+  <tizen:privilege name="http://tizen.org/privilege/download"/>
+  <tizen:privilege name="http://tizen.org/privilege/systeminfo"/>
+  <tizen:privilege name="http://tizen.org/privilege/tv.audio"/>
+  <tizen:privilege name="http://developer.samsung.com/privilege/productinfo"/>
+  <tizen:privilege name="http://developer.samsung.com/privilege/network.public"/>
+  <tizen:privilege name="http://developer.samsung.com/privilege/avplay"/>
+
+  <!-- Companion background service for phone pairing, local bridge, and proxy -->
+  <tizen:service id="${PACKAGE_ID}.Service" auto-restart="true" on-boot="false">
+    <tizen:content src="service/service.js"/>
+    <tizen:name>BitChordService</tizen:name>
+    <tizen:icon src="icon.png"/>
+    <tizen:description>BitChord local proxy, sign-in pairing and phone remote</tizen:description>
+    <tizen:category name="http://tizen.org/category/service"/>
+  </tizen:service>
+</widget>

@@ -1,0 +1,23 @@
+{
+  "extends": "../web/tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "paths": {
+      "@/*": [
+        "./src/*",
+        "../web/app/src/*"
+      ],
+      "@bitchord/shared": [
+        "../web/shared/src/index.ts"
+      ],
+      "@bitchord/shared/bridge": [
+        "../web/shared/src/bridge/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "src",
+    "vite.config.ts"
+  ]
+}
+

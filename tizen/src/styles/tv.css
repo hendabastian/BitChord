@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --tv-safe-x: 56px;
+    --tv-safe-y: 40px;
+    --tv-key-color: #fa2d48;
+    --tv-card-radius: 18px;
+    --tv-focus-scale: 1.06;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #08080b;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Google Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  /* Hide default scrollbars on TV */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* TV Focusable Item Styles - High Visibility for TV screens */
+.tv-focusable {
+  outline: none;
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.18s ease,
+              background-color 0.18s ease;
+  position: relative;
+  will-change: transform;
+  scroll-margin-top: 100px;
+  scroll-margin-bottom: 60px;
+}
+
+.tv-focusable:focus,
+.tv-focusable:focus-visible,
+.tv-focusable[data-focused="true"] {
+  transform: scale(var(--tv-focus-scale));
+  z-index: 40;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 28px rgba(250, 45, 72, 0.65), 0 0 0 3px rgba(255, 255, 255, 0.95);
+  border-color: rgba(255, 255, 255, 1) !important;
+}
+
+.tv-pill-focusable {
+  outline: none;
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.18s ease,
+              color 0.18s ease;
+  scroll-margin-top: 100px;
+  scroll-margin-bottom: 60px;
+}
+
+.tv-pill-focusable:focus,
+.tv-pill-focusable:focus-visible,
+.tv-pill-focusable[data-focused="true"] {
+  transform: scale(1.08);
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 255, 255, 0.7), 0 0 0 3px #ffffff;
+}
+
+.tv-pill-focusable:focus svg,
+.tv-pill-focusable:focus-visible svg,
+.tv-pill-focusable[data-focused="true"] svg {
+  color: #000000 !important;
+  stroke: #000000 !important;
+}
+
+/* Ambient Canvas Tint */
+.tv-canvas-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  background: radial-gradient(circle at 50% -10%, var(--ambient-color, rgba(250, 45, 72, 0.3)) 0%, rgba(8, 8, 11, 0.95) 70%, #08080b 100%);
+  transition: background 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+

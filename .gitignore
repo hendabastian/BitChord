@@ -50,3 +50,12 @@ AGENTS.md
 
 # Claude Code session files (launch configs, worktrees)
 .claude/
+
+# Tizen build outputs & certificates
+tizen/.tizen-data/
+tizen/dist/
+tizen/certs/*.p12
+tizen/node_modules/
+.bitchord-auth/
+tizen/.bitchord-auth/
+

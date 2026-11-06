@@ -2,7 +2,7 @@
   "name": "bitchord-web",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@12.11.2",
+  "packageManager": "pnpm@11.13.1",
   "engines": {
     "node": ">=22"
   },
